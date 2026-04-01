@@ -1,14 +1,15 @@
-import React from 'react';
+import { Fragment } from 'react';
+
 import './CaseStudyCard.css';
 
 function MetaTable({ rows }) {
   return (
     <div className="meta-table">
       {rows.map(({ label, value }) => (
-        <React.Fragment key={label}>
+        <Fragment key={label}>
           <div className="meta-label">{label}</div>
           <div className="meta-value">{value}</div>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import './ResumeCTA.css';
 
 function DownloadIcon() {
   return (

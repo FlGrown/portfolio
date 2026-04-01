@@ -1,6 +1,8 @@
 import {Fragment} from 'react';
+
 import {CaseStudyCard} from '../../components';
 import caseStudies from '../../data/caseStudies';
+
 import './CaseStudiesPage.css';
 
 export const CaseStudiesPage = () => {

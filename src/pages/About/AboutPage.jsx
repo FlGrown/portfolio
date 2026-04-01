@@ -1,21 +1,15 @@
-import { ProfilePhoto, PhotoGrid } from '../../components';
-import barcelona from '../../assets/barcelona.jpg';
+import { Photo, PhotoGrid } from '../../components';
+
 import profile from '../../assets/profile-pic.jpg';
-import iceland from '../../assets/iceland.jpg';
-import italy from '../../assets/italy.jpg';
-import nyc from '../../assets/nyc.jpg';
+
 import './AboutPage.css';
 
 export const AboutPage = () => {
+  const travelModule = import.meta.glob('../../assets/travel/*.{png,jpg,jpeg,svg}', { eager: true });
   const legoModules = import.meta.glob('../../assets/lego/*.{png,jpg,jpeg,svg}', { eager: true });
 
-  const travelPhotos = [
-    {src: iceland, alt: 'hiking Iceland'},
-    {src: barcelona, alt: 'Camp Nou, Barcelona'},
-    {src: nyc, alt: 'Central Park, New York City'},
-    {src: italy, alt: 'Italy'},
-  ]
-  const legoPhotos = Object.values(legoModules).map((module) => {return {src: module.default, alt: ''}})
+  const travelPhotos = Object.values(travelModule).map((module) => {return {src: module.default, alt: ''}});
+  const legoPhotos = Object.values(legoModules).map((module) => {return {src: module.default, alt: ''}});
 
   return (
     <main>
@@ -58,7 +52,7 @@ export const AboutPage = () => {
           </div>
 
           <div className="about-intro-photo">
-            <ProfilePhoto src={profile} />
+            <Photo src={profile} />
           </div>
         </section>
 

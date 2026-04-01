@@ -1,5 +1,6 @@
-export {CaseStudyCard} from "./CaseStudyCard/CaseStudyCard";
-export {Footer} from "./Footer/Footer";
-export {Header} from "./Header/Header";
-export {ProfilePhoto, PhotoGrid} from "./Photo/Photo";
-export {ResumeCTA} from "./ResumeCTA/ResumeCTA";
+export { CaseStudyCard } from "./CaseStudyCard/CaseStudyCard";
+export { Footer } from "./Footer/Footer";
+export { Header } from "./Header/Header";
+export { Photo } from "./Photo/Photo";
+export { PhotoGrid } from "./Photo/PhotoGrid";
+export { ResumeCTA } from "./ResumeCTA/ResumeCTA";

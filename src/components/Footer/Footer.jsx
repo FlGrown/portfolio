@@ -1,6 +1,6 @@
-import React from 'react';
+import { ResumeCTA } from "../";
+
 import './Footer.css';
-import { ResumeCTA } from "../ResumeCTA/ResumeCTA";
 
 export const Footer = () => {
   return (
@@ -8,7 +8,7 @@ export const Footer = () => {
       <ResumeCTA />
       <footer className="site-footer">
         <p>
-          <strong>Jorge R. Piquer</strong> · piquerjr@gmail.com · (407) 474-2777
+          <strong>Jorge R. Piquer</strong> · piquerjr@gmail.com
         </p>
         <p className="footer-note">
           All case study details are sanitized. Proprietary code, internal data, and client information have been omitted.
