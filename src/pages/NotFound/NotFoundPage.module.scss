@@ -12,21 +12,15 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  max-width: 480px;
-}
-
-.notFoundNumber {
-  font-family: var(--serif);
-  font-size: 120px;
-  color: var(--accent-light);
-  line-height: 1;
-  margin-bottom: -8px;
+  max-width: 85%;
 }
 
 .notFoundImageWrap {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
+  aspect-ratio: 16 / 9;
+  width: auto;
+  height: auto;
+  max-width: 95%;
+  border-radius: 10%;
   overflow: hidden;
   border: 4px solid var(--accent-light);
 }

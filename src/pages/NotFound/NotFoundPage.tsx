@@ -1,16 +1,15 @@
 import { FC } from "react";
 import { Link } from "react-router";
+import notFound from "../../assets/404.png";
 import styles from "./NotFoundPage.module.scss";
 
 export const NotFoundPage: FC = () => {
   return (
     <main className={styles.notFound}>
       <div className={styles.notFoundInner}>
-        <div className={styles.notFoundNumber}>404</div>
-
         <div className={styles.notFoundImageWrap}>
           <img
-            src="https://your-image-link-here.jpg"
+            src={notFound}
             alt="404 illustration"
             className={styles.notFoundImage}
           />
