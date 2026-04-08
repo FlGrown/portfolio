@@ -1,0 +1,17 @@
+{
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "arrowParens": "always",
+  "importOrder": [
+    "^react",
+    "^@?\\w",
+    "^@/",
+    "^[./].*(?<!\\.(c|sc)ss)$",
+    "\\.(c|sc)ss$"
+  ],
+  "importOrderSeperation": true,
+  "importOrderSortSpecifiers": true,
+  "overrides": [{ "files": ["*.ts", "*.tsx"] }],
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "all"
+}

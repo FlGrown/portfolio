@@ -1,12 +1,12 @@
-.cs-card {
+.csCard {
   margin-bottom: 96px;
 }
 
-.cs-card:last-child {
+.csCard:last-child {
   margin-bottom: 0;
 }
 
-.cs-number {
+.csNumber {
   font-family: var(--serif);
   font-size: 72px;
   font-weight: 400;
@@ -16,7 +16,7 @@
   user-select: none;
 }
 
-.cs-title {
+.csTitle {
   font-family: var(--serif);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
@@ -27,17 +27,18 @@
 }
 
 /* ── META TABLE ── */
-.meta-table {
+.metaTable {
   display: grid;
   grid-template-columns: 130px 1fr;
   border: 1px solid var(--rule);
   border-radius: 8px;
   overflow: hidden;
+  padding: 5px;
   margin-bottom: 40px;
   background: white;
 }
 
-.meta-label {
+.metaLabel {
   background: var(--accent-light);
   padding: 10px 16px;
   font-size: 11px;
@@ -50,7 +51,7 @@
   align-items: center;
 }
 
-.meta-value {
+.metaValue {
   padding: 10px 16px;
   font-size: 14px;
   color: var(--ink);
@@ -59,17 +60,17 @@
   align-items: center;
 }
 
-.meta-label:nth-last-child(2),
-.meta-value:last-child {
+.metaLabel:nth-last-child(2),
+.metaValue:last-child {
   border-bottom: none;
 }
 
 /* ── SECTION BLOCKS ── */
-.cs-block {
+.csBlock {
   margin-bottom: 32px;
 }
 
-.section-block-title {
+.sectionBlockTitle {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -81,27 +82,27 @@
   gap: 8px;
 }
 
-.section-block-title::after {
-  content: '';
+.sectionBlockTitle::after {
+  content: "";
   flex: 1;
   height: 1px;
   background: var(--rule);
   max-width: 60px;
 }
 
-.cs-para {
+.csPara {
   font-size: 15px;
   color: #2a2a2a;
   line-height: 1.75;
   margin-bottom: 12px;
 }
 
-.cs-para:last-child {
+.csPara:last-child {
   margin-bottom: 0;
 }
 
 /* ── BULLET LIST ── */
-.cs-bullet-list {
+.csBulletList {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -109,7 +110,7 @@
   margin-top: 8px;
 }
 
-.cs-bullet-list li {
+.csBulletList li {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -118,8 +119,8 @@
   line-height: 1.6;
 }
 
-.cs-bullet-list li::before {
-  content: '';
+.csBulletList li::before {
+  content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -129,54 +130,47 @@
 }
 
 /* ── OUTCOMES CARD ── */
-.cs-outcomes-card {
+.csOutcomesCard {
   background: var(--accent);
   border-radius: 10px;
   padding: 28px 32px;
   margin-bottom: 24px;
 }
 
-.cs-outcomes-card .section-block-title {
+.csOutcomesCard .sectionBlockTitle {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.cs-outcomes-card .section-block-title::after {
+.csOutcomesCard .sectionBlockTitle::after {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.cs-outcomes-card .cs-bullet-list li {
+.csOutcomesCard .csBulletList li {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.cs-outcomes-card .cs-bullet-list li::before {
+.csOutcomes-card .csBulletList li::before {
   background: rgba(255, 200, 100, 0.8);
 }
 
 /* ── REFLECTION ── */
-.cs-reflection {
+.csReflection {
   border-left: 3px solid var(--rule);
   padding: 16px 20px;
   background: #fefefe;
   border-radius: 0 6px 6px 0;
 }
 
-.cs-reflection .section-block-title {
+.csReflection .sectionBlockTitle {
   color: var(--muted);
 }
 
-.cs-reflection .section-block-title::after {
+.csReflection .sectionBlockTitle::after {
   background: var(--rule);
 }
 
-.cs-reflection .cs-para {
+.csReflection .csPara {
   font-size: 14px;
   color: var(--muted);
   font-style: italic;
-}
-
-/* ── DIVIDER ── */
-.cs-divider {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 0 0 96px;
 }

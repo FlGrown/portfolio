@@ -1,0 +1,55 @@
+/* ── PROFILE PHOTO ── */
+.profilePhotoWrap {
+  width: 100%;
+}
+
+.profilePhotoContainer {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.profilePhoto {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+/* ── PHOTO GRID ── */
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.gridCell {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gridPhotoWrap {
+  width: 100%;
+  height: 100%;
+}
+
+.gridPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gridPhoto-wrap:hover .gridPhoto {
+  transform: scale(1.04);
+}
+
+@media (max-width: 500px) {
+  .photoGrid {
+    grid-template-columns: 1fr;
+  }
+}
