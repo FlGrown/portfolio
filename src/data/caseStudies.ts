@@ -139,6 +139,7 @@ export const caseStudies: CaseStudyType[] = [
     id: "component-library",
     number: "03",
     title: "Component Library & WCAG Accessibility Overhaul",
+    video: "/videos/component-library.mov",
     meta: [
       {
         label: "Company",

@@ -17,4 +17,5 @@ export interface CaseStudyType {
   readonly number: string;
   readonly sections: ReadonlyArray<SectionType>;
   readonly title: string;
+  readonly video?: string;
 }

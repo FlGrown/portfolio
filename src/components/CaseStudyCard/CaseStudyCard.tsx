@@ -1,5 +1,6 @@
 import { FC, Fragment } from "react";
 import { CaseStudyType, SectionType } from "@/types";
+import { VideoPreview } from "..";
 import { BulletsBlock } from "./BulletsBlock";
 import { MetaTable } from "./MetaInfoTable";
 import { OutcomesBlock } from "./OutcomesBlock";
@@ -35,6 +36,9 @@ export const CaseStudyCard: FC<CaseStudyCardProps> = ({ study, delay = 0 }) => {
     >
       <div className={styles.csNumber}>{study.number}</div>
       <h2 className={styles.csTitle}>{study.title}</h2>
+      {study.video && (
+        <VideoPreview label="Component Library" src={study.video} />
+      )}
       <MetaTable rows={study.meta} />
       {study.sections.map((section, i) => renderSection(section, i))}
     </article>

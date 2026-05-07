@@ -4,3 +4,4 @@ export { Header } from "./Header/Header";
 export { Photo } from "./Photo/Photo";
 export { PhotoGrid } from "./Photo/PhotoGrid";
 export { ResumeCTA } from "./ResumeCTA/ResumeCTA";
+export { VideoPreview } from "./VideoPreview/ViedoPreview";
