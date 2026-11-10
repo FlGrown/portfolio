@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { ResumeCTA } from "@/components";
+import shared from "@/index.module.scss";
 import styles from "./Footer.module.scss";
 
 export const Footer: FC = () => {
@@ -7,13 +8,13 @@ export const Footer: FC = () => {
     <>
       <ResumeCTA />
       <footer className={styles.siteFooter}>
-        <p>
-          <strong>Jorge R. Piquer</strong> · piquerjr@gmail.com
-        </p>
-        <p className={styles.footerNote}>
-          All case study details are sanitized. Proprietary code, internal data,
-          and client information have been omitted.
-        </p>
+        <div className={`${shared.container} ${styles.inner}`}>
+          <p>Jorge R. Piquer · piquerjr@gmail.com</p>
+          <p>
+            Case studies are sanitized. Proprietary code, internal data, and
+            client information have been omitted.
+          </p>
+        </div>
       </footer>
     </>
   );

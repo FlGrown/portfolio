@@ -11,7 +11,7 @@ export const MetaTable: FC<MetaTableProps> = ({ rows }) => {
     <div className={styles.metaTable}>
       {rows.map(({ label, value }) => (
         <Fragment key={label}>
-          <div className={styles.metalabel}>{label}</div>
+          <div className={styles.metaLabel}>{label}</div>
           <div className={styles.metaValue}>{value}</div>
         </Fragment>
       ))}

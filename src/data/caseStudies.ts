@@ -5,6 +5,26 @@ export const caseStudies: CaseStudyType[] = [
     id: "claims-adjudication",
     number: "01",
     title: "Medical Claims Adjudication System",
+    period: "2021 – Present",
+    role: "Key frontend contributor",
+    stack: "React · TypeScript · React-Query · Sass · AWS Lambda",
+    stat: {
+      value: "30%",
+      label: "more efficient claims processing workflow",
+    },
+    summary: {
+      problem:
+        "A net-new system for clinical and operations staff to process, review, and resolve complex healthcare claims. Existing workflows were fragmented, slow, and error-prone.",
+      built: [
+        "Multi-step claim review flows with complex conditional logic",
+        "Data-dense tables, filters, and status indicators for high-volume claims",
+        "Requirements refined directly with backend engineers and clinical SMEs",
+      ],
+      tradeoff:
+        "React-Query as the server-state layer instead of a global store, and typed reusable components early. Slower at first; new claim types later composed from existing parts.",
+      hindsight:
+        "I'd invest in Playwright end-to-end coverage sooner to catch edge cases in complex claim flows before production.",
+    },
     meta: [
       {
         label: "Company",
@@ -71,6 +91,26 @@ export const caseStudies: CaseStudyType[] = [
     id: "prior-authorization",
     number: "02",
     title: "Prior Authorization Tool Rebuild",
+    period: "2022 – 2023",
+    role: "Lead frontend engineer",
+    stack: "React · TypeScript · React-Query · REST APIs",
+    stat: {
+      value: "50%",
+      label: "fewer API calls after the rebuild",
+    },
+    summary: {
+      problem:
+        "A legacy tool clinical staff used daily to approve or deny medication requests. Components fired redundant API calls, so pages loaded slowly and showed stale data.",
+      built: [
+        "One caching layer with request deduplication and background refetching",
+        "Optimistic updates and centralized cache invalidation on each decision",
+        "Screens reorganized around the clinical workflow, not the data model",
+      ],
+      tradeoff:
+        "A full rebuild over incremental refactoring. It delayed delivery and meant running the legacy tool in parallel, but the foundations were too broken to patch.",
+      hindsight:
+        "I'd bring clinical SMEs into design earlier. Some post-launch workflow changes could have been found in discovery.",
+    },
     meta: [
       {
         label: "Company",
@@ -140,6 +180,26 @@ export const caseStudies: CaseStudyType[] = [
     number: "03",
     title: "Component Library & WCAG Accessibility Overhaul",
     video: "/videos/component-library.mov",
+    period: "2022 – 2023",
+    role: "Frontend lead, with a designer",
+    stack: "React · TypeScript · Sass · WCAG 2.1 AA",
+    stat: {
+      value: "20%",
+      label: "less debugging time for the engineering team",
+    },
+    summary: {
+      problem:
+        "Teams were building similar components independently: fragmented visuals, duplicated code, and inconsistent accessibility with no single source of truth.",
+      built: [
+        "An audit of the library, with violations ranked by severity and frequency",
+        "Semantic HTML, ARIA, keyboard navigation, and focus management per component",
+        "Shared tokens and usage docs so accessible defaults are inherited",
+      ],
+      tradeoff:
+        "AA over AAA. Some AAA contrast ratios conflicted with the approved brand palette; AA covered the most impactful needs within the timeline.",
+      hindsight:
+        "I'd wire axe-core into CI from the start. Manual audits were thorough but slow at catching regressions.",
+    },
     meta: [
       {
         label: "Company",

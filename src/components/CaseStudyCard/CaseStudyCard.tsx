@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 import { CaseStudyType, SectionType } from "@/types";
 import { VideoPreview } from "..";
 import { BulletsBlock } from "./BulletsBlock";
@@ -10,7 +10,6 @@ import styles from "./CaseStudyCard.module.scss";
 
 interface CaseStudyCardProps {
   readonly study: CaseStudyType;
-  readonly delay: number;
 }
 
 function renderSection(section: SectionType, index: number) {
@@ -28,19 +27,61 @@ function renderSection(section: SectionType, index: number) {
   }
 }
 
-export const CaseStudyCard: FC<CaseStudyCardProps> = ({ study, delay = 0 }) => {
+export const CaseStudyCard: FC<CaseStudyCardProps> = ({ study }) => {
+  const { summary, stat } = study;
+
   return (
-    <article
-      className={`${styles.csCard} ${styles.fadeIn}`}
-      style={{ animationDelay: `${delay}s` }}
-    >
-      <div className={styles.csNumber}>{study.number}</div>
-      <h2 className={styles.csTitle}>{study.title}</h2>
+    <article className={styles.csCard}>
+      <header className={styles.csHead}>
+        <p className={styles.csMeta}>
+          <span className={styles.csNumber}>{study.number}</span> ·{" "}
+          {study.period} · {study.role}
+        </p>
+        <h3 className={styles.csTitle}>{study.title}</h3>
+      </header>
+
       {study.video && (
         <VideoPreview label="Component Library" src={study.video} />
       )}
-      <MetaTable rows={study.meta} />
-      {study.sections.map((section, i) => renderSection(section, i))}
+
+      <div className={styles.csBody}>
+        <div className={styles.statPanel}>
+          <p className={styles.statValue}>{stat.value}</p>
+          <p className={styles.statLabel}>{stat.label}</p>
+          <p className={styles.statStack}>{study.stack}</p>
+        </div>
+
+        <div className={styles.summary}>
+          <div className={styles.summaryBlock}>
+            <h4>Problem</h4>
+            <p>{summary.problem}</p>
+          </div>
+          <div className={styles.summaryBlock}>
+            <h4>What I built</h4>
+            <ul>
+              {summary.built.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.summaryBlock}>
+            <h4>Key tradeoff</h4>
+            <p>{summary.tradeoff}</p>
+          </div>
+          <div className={`${styles.summaryBlock} ${styles.hindsight}`}>
+            <h4>In hindsight</h4>
+            <p>{summary.hindsight}</p>
+          </div>
+        </div>
+      </div>
+
+      <details className={styles.writeup}>
+        <summary>Read the full write-up</summary>
+        <div className={styles.writeupBody}>
+          <MetaTable rows={study.meta} />
+          {study.sections.map((section, i) => renderSection(section, i))}
+        </div>
+      </details>
     </article>
   );
 };

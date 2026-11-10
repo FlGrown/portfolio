@@ -1,7 +1,9 @@
+export { BrickTimeline } from "./BrickTimeline/BrickTimeline";
 export { CaseStudyCard } from "./CaseStudyCard/CaseStudyCard";
 export { Footer } from "./Footer/Footer";
 export { Header } from "./Header/Header";
 export { Photo } from "./Photo/Photo";
 export { PhotoGrid } from "./Photo/PhotoGrid";
+export { PhotoSlideshow } from "./Photo/PhotoSlideshow";
 export { ResumeCTA } from "./ResumeCTA/ResumeCTA";
 export { VideoPreview } from "./VideoPreview/ViedoPreview";

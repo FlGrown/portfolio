@@ -1,24 +1,28 @@
-import { FC } from "react";
-import { PhotoProps } from "@/types";
+import { FC, ReactNode } from "react";
+import { AlbumType } from "@/types";
+import { PhotoSlideshow } from "./PhotoSlideshow";
 import styles from "./Photo.module.scss";
 
 interface PhotoGridProps {
-  readonly photos: ReadonlyArray<PhotoProps>;
+  readonly albums: ReadonlyArray<AlbumType>;
+  /** Optional tile shown beside the first, large slideshow. */
+  readonly children?: ReactNode;
 }
 
-export const PhotoGrid: FC<PhotoGridProps> = ({ photos = [] }) => {
+export const PhotoGrid: FC<PhotoGridProps> = ({ albums, children }) => {
+  const [first, ...rest] = albums;
+
   return (
     <div className={styles.photoGrid}>
-      {photos.map((photo, i) => (
-        <div key={i} className={styles.gridCell}>
-          <div className={styles.gridPhotoWrap}>
-            <img
-              src={photo.src}
-              alt={photo.alt || `Photo ${i + 1}`}
-              className={styles.gridPhoto}
-            />
-          </div>
-        </div>
+      {first && <PhotoSlideshow album={first} className={styles.feature} />}
+      {children}
+      {rest.map((album, i) => (
+        // Stagger the tiles so they don't all change at once.
+        <PhotoSlideshow
+          key={album.id}
+          album={album}
+          startDelay={(i + 1) * 1500}
+        />
       ))}
     </div>
   );

@@ -1,53 +1,51 @@
-import { Fragment } from "react";
 import { CaseStudyCard } from "@/components";
 import caseStudies from "@/data/caseStudies";
-import appStyles from "../../index.module.scss";
+import shared from "@/index.module.scss";
+import styles from "./CaseStudiesPage.module.scss";
+
+const skills = [
+  "React",
+  "TypeScript",
+  "React-Query",
+  "Design systems",
+  "WCAG 2.1 AA",
+];
 
 export const CaseStudiesPage = () => {
   return (
-    <main>
-      <div className={appStyles.pageHeader}>
-        <div className={appStyles.pageHeaderInner}>
-          <p className={appStyles.eyebrow}>
-            Portfolio · Engineering Case Studies
-          </p>
-          <h1>
-            Jorge R. Piquer
-            <br />
-            <em>Senior Front-End Engineer</em>
-          </h1>
-          <p className={appStyles.pageHeaderSub}>
-            10+ years building scalable, high-performance web applications in
-            healthtech and SaaS. Specializing in React, TypeScript, and design
-            systems.
-          </p>
-          <div className={appStyles.headerTags}>
-            {[
-              "React",
-              "TypeScript",
-              "React-Query",
-              "Design Systems",
-              "WCAG Accessibility",
-              "Healthtech",
-            ].map((tag) => (
-              <span key={tag} className="tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+    <main className={shared.container}>
+      <section className={shared.hero}>
+        <p className={shared.eyebrow}>
+          Senior Front-End Engineer · 10+ years · Healthtech &amp; SaaS
+        </p>
+        <h1 className={shared.heroTitle}>
+          I build fast, accessible interfaces for{" "}
+          <em>complicated workflows.</em>
+        </h1>
+        <p className={shared.heroLead}>
+          Three case studies from my work on clinical tools: claims
+          adjudication, prior authorization, and the component library
+          underneath them.
+        </p>
+        <ul className={styles.skills}>
+          {skills.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+      </section>
 
-      <div className={appStyles.pageMain}>
-        {caseStudies.map((study, i) => (
-          <Fragment key={study.id}>
-            <CaseStudyCard study={study} delay={0.1 + i * 0.15} />
-            {i < caseStudies.length - 1 && (
-              <hr className={appStyles.csDivider} />
-            )}
-          </Fragment>
+      <section className={shared.section}>
+        <div className={shared.sectionHead}>
+          <h2>Selected work</h2>
+          <p className={shared.eyebrow}>
+            {String(caseStudies.length).padStart(2, "0")} case studies ·
+            sanitized
+          </p>
+        </div>
+        {caseStudies.map((study) => (
+          <CaseStudyCard key={study.id} study={study} />
         ))}
-      </div>
+      </section>
     </main>
   );
 };

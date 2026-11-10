@@ -1,9 +1,11 @@
 import { FC } from "react";
+import shared from "@/index.module.scss";
 import styles from "./ResumeCTA.module.scss";
 
 function DownloadIcon() {
   return (
     <svg
+      aria-hidden="true"
       width="18"
       height="18"
       viewBox="0 0 24 24"
@@ -22,15 +24,11 @@ function DownloadIcon() {
 
 export const ResumeCTA: FC = () => {
   return (
-    <section className={styles.resumeCta}>
-      <div className={styles.resumeCtaInner}>
-        <div>
-          <p className={styles.resumeCtaEyebrow}>Want the full picture?</p>
-          <h2>Download My Resume</h2>
-          <p>
-            10+ years of frontend engineering across healthtech and SaaS — full
-            work history, skills, and education.
-          </p>
+    <div className={shared.container}>
+      <section id="resume" className={styles.resumeCta}>
+        <div className={styles.text}>
+          <h2>Want the full picture?</h2>
+          <p>Full work history, skills, and education in one PDF.</p>
         </div>
         <a
           href="/Jorge_Piquer_Resume.pdf"
@@ -38,9 +36,9 @@ export const ResumeCTA: FC = () => {
           className={styles.downloadBtn}
         >
           <DownloadIcon />
-          Download Resume
+          Download résumé
         </a>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };

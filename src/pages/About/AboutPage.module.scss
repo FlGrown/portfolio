@@ -1,71 +1,44 @@
-@use "../../index.module.scss";
-
-/* ── INTRO ── */
-.aboutIntro {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 64px;
-  align-items: start;
-  margin-bottom: 80px;
+/* ── HERO ── */
+.aboutHero {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 48px;
 }
 
-.aboutIntroText p {
-  font-size: 15px;
-  color: #2a2a2a;
-  line-height: 1.8;
-  margin-bottom: 16px;
+.aboutHeroText {
+  flex: 999 1 520px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-.aboutIntroText p:last-child {
-  margin-bottom: 0;
+.aboutHeroPhoto {
+  flex: 1 1 220px;
+  max-width: 280px;
 }
 
-.aboutSectionTitle {
-  font-family: var(--serif);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 400;
-  color: var(--accent);
-  margin-bottom: 24px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+/* ── OUTSIDE OF WORK ── */
+.outsideTile {
+  background: var(--ink);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-/* ── DIVIDER ── */
-.aboutDivider {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 0 0 64px;
-}
-
-/* ── OUTSIDE WORK ── */
-.aboutOutsideHeader {
-  margin-bottom: 8px;
-}
-
-.aboutEyebrow {
-  font-size: 11px;
+.outsideTile h3 {
+  font-family: var(--display);
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--highlight);
-  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
-.aboutOutsideBody {
+.outsideTile p {
   font-size: 15px;
-  color: #2a2a2a;
-  line-height: 1.8;
-  max-width: 620px;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 700px) {
-  .aboutIntro {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .aboutIntroPhoto {
-    max-width: 260px;
-  }
+  color: var(--on-dark);
 }

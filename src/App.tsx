@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router";
 import { Footer, Header } from "./components";
 import { AboutPage, CaseStudiesPage, NotFoundPage } from "./pages";
-import "./App.module.scss";
+import shared from "./index.module.scss";
 
 function App() {
   return (
-    <div className="app">
+    <div className={shared.app}>
       <Header />
       <Routes>
         <Route path="/" element={<CaseStudiesPage />} />

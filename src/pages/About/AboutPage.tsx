@@ -1,113 +1,89 @@
+import { BrickTimeline, Photo, PhotoGrid } from "@/components";
+import { career, education } from "@/data/career";
+import shared from "@/index.module.scss";
+import { AlbumType } from "@/types";
 import profile from "../../assets/profile-pic.jpg";
-import { Photo, PhotoGrid } from "../../components";
 import styles from "./AboutPage.module.scss";
 
-interface ImageModule {
-  default: string;
+// Every folder in src/assets becomes one slideshow tile, in folder-name order.
+// To add a tile, add a folder of photos; to add a slide, add a photo to a folder.
+const albumOrder = ["travel", "lego"];
+const albumTitles: Record<string, string> = { lego: "LEGO" };
+
+const photoModules = import.meta.glob<string>(
+  "../../assets/*/*.{png,jpg,jpeg,webp}",
+  { eager: true, import: "default" },
+);
+
+function buildAlbums(): AlbumType[] {
+  const byFolder = new Map<string, string[]>();
+  for (const [path, src] of Object.entries(photoModules)) {
+    const folder = path.split("/").slice(-2)[0];
+    if (!folder) continue;
+    byFolder.set(folder, [...(byFolder.get(folder) ?? []), src]);
+  }
+
+  const rank = (folder: string) => {
+    const position = albumOrder.indexOf(folder);
+    return position === -1 ? albumOrder.length : position;
+  };
+
+  return [...byFolder.entries()]
+    .sort(([a], [b]) => rank(a) - rank(b) || a.localeCompare(b))
+    .map(([folder, sources]) => ({
+      id: folder,
+      title:
+        albumTitles[folder] ?? folder.charAt(0).toUpperCase() + folder.slice(1),
+      photos: sources.map((src) => ({ src })),
+    }));
 }
 
+const albums = buildAlbums();
+
 export const AboutPage = () => {
-  const travelModule = import.meta.glob<ImageModule>(
-    "../../assets/travel/*.{png,jpg,jpeg,svg}",
-    { eager: true },
-  );
-  const legoModules = import.meta.glob<ImageModule>(
-    "../../assets/lego/*.{png,jpg,jpeg,svg}",
-    { eager: true },
-  );
-
-  const travelPhotos = Object.values(travelModule).map((module) => {
-    return { src: module.default, alt: "" };
-  });
-  const legoPhotos = Object.values(legoModules).map((module) => {
-    return { src: module.default, alt: "" };
-  });
-
   return (
-    <main>
-      <div className={styles.pageHeader}>
-        <div className={styles.pageHeaderInner}>
-          <p className={styles.eyebrow}>About Me</p>
-          <h1>
-            Jorge R. Piquer
-            <br />
-            <em>Senior Front-End Engineer</em>
+    <main className={shared.container}>
+      <section className={`${shared.hero} ${styles.aboutHero}`}>
+        <div className={styles.aboutHeroText}>
+          <p className={shared.eyebrow}>About</p>
+          <h1 className={shared.heroTitle}>
+            A psychology degree, a math degree, and{" "}
+            <em>ten years of front-end.</em>
           </h1>
-          <p className={styles.pageHeaderSub}>
-            Building intuitive, high-performance web products at the
-            intersection of engineering and design.
+          <p className={shared.heroLead}>
+            I'm Jorge. I care about accessibility, performance, and getting the
+            small things right, and I'm as comfortable leading architecture
+            decisions as pairing with a designer or chasing a production issue.
           </p>
         </div>
-      </div>
+        <div className={styles.aboutHeroPhoto}>
+          <Photo src={profile} />
+        </div>
+      </section>
 
-      <div className={styles.pageMain}>
-        {/* ── INTRO ── */}
-        <section
-          className={`${styles.aboutIntro} ${styles.fadeIn} ${styles.fadeIn1}`}
-        >
-          <div className={styles.aboutIntroText}>
-            <h2 className={styles.aboutSectionTitle}>Hey, I'm Jorge.</h2>
+      <section className={shared.section}>
+        <div className={shared.sectionHead}>
+          <h2>Built brick by brick</h2>
+          <p className={shared.eyebrow}>Pick a brick</p>
+        </div>
+        <BrickTimeline chapters={career} baseplate={education} />
+      </section>
+
+      <section className={shared.section}>
+        <div className={shared.sectionHead}>
+          <h2>Outside of work</h2>
+        </div>
+        <PhotoGrid albums={albums}>
+          <div className={styles.outsideTile}>
+            <h3>Life beyond the IDE</h3>
             <p>
-              I'm a Senior Front-End Engineer with over 10 years of experience
-              building scalable, high-performance web applications. I specialize
-              in React, TypeScript, and design systems — with a deep focus on
-              the kind of details that make products feel genuinely good to use.
-            </p>
-            <p>
-              Most of my career has been in healthtech and SaaS, where the
-              stakes of a confusing UI are real. I've spent years at Capital Rx
-              building complex clinical workflows for medical claims and prior
-              authorization — and before that, building responsive, accessible
-              client sites at Finalsite.
-            </p>
-            <p>
-              I care about accessibility, performance, and getting the small
-              things right. I'm equally comfortable leading architecture
-              decisions, pairing with designers, or diving into a production
-              issue at midnight.
+              When I'm not building UIs, I'm usually exploring somewhere new. At
+              home I'm a life-long LEGO fan and enjoy building from many of the
+              themes they offer.
             </p>
           </div>
-
-          <div className={styles.aboutIntroPhoto}>
-            <Photo src={profile} />
-          </div>
-        </section>
-
-        <hr className={styles.aboutDivider} />
-
-        {/* ── OUTSIDE WORK ── */}
-        <section
-          className={`${styles.aboutOutside} ${styles.fadeIn} ${styles.fadeIn2}`}
-        >
-          <div className={styles.aboutOutsideHeader}>
-            <p className={styles.aboutEyebrow}>Outside of Work</p>
-            <h2 className={styles.aboutSectionTitle}>Life beyond the IDE</h2>
-            <p className={styles.aboutOutsideBody}>
-              When I'm not building UIs, I'm usually exploring what else life
-              has to offer. I believe that a full life outside of engineering
-              makes you a better engineer — it's where curiosity, creativity,
-              and perspective come from.
-            </p>
-          </div>
-
-          <PhotoGrid photos={travelPhotos} />
-
-          <hr className={styles.aboutDivider} />
-
-          <section
-            className={`${styles.aboutOutside} ${styles.fadeIn} ${styles.fadeIn2}`}
-          >
-            <div className={styles.aboutOutsideHeader}>
-              <p className={styles.aboutOutsideBody}>
-                At home I am a life-long LEGO fan and enjoy spending time
-                building from many of the themes they offer.
-              </p>
-            </div>
-          </section>
-
-          <PhotoGrid photos={legoPhotos} />
-        </section>
-      </div>
+        </PhotoGrid>
+      </section>
     </main>
   );
 };
